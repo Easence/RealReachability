@@ -71,6 +71,16 @@ static NSString *connectionFlags(SCNetworkReachabilityFlags flags)
     return self;
 }
 
+- (id)initWithHostName:(nonnull NSString*) hostName
+{
+    if ((self = [super init]))
+    {
+        _reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
+        _reachabilitySerialQueue = dispatch_queue_create("com.dustturtle.realreachability", NULL);
+    }
+    return self;
+}
+
 - (void)dealloc
 {
     [self stopNotifier];
@@ -92,6 +102,17 @@ static NSString *connectionFlags(SCNetworkReachabilityFlags flags)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         localConnection = [[self alloc] init];
+    });
+    
+    return localConnection;
+}
+
++ (instancetype)sharedInstanceWithHostName:(nonnull NSString *)hostName
+{
+    static id localConnection = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        localConnection = [[self alloc] initWithHostName:hostName];
     });
     
     return localConnection;
