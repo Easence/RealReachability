@@ -12,6 +12,7 @@
 #import "PingHelper.h"
 #import <UIKit/UIKit.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import "RealReachabilityGlobal.h"
 
 #if (!defined(DEBUG))
 #define NSLog(...)
@@ -90,7 +91,7 @@ NSString *const kRealReachabilityChangedNotification = @"kRealReachabilityChange
     
     self.engine = nil;
     
-    [GLocalConnection stopNotifier];
+    [[RealReachabilityGlobal sharedInstance].localConnection stopNotifier];
 }
 
 #pragma mark - Handle system event
@@ -118,6 +119,13 @@ NSString *const kRealReachabilityChangedNotification = @"kRealReachabilityChange
 
 #pragma mark - actions
 
+- (void)setHostForLocalConnection:(NSString *)hostForLocalConnection {
+    
+    if (hostForLocalConnection != nil) {
+        [RealReachabilityGlobal sharedInstance].localConnection = [[LocalConnection alloc] initWithHostName:hostForLocalConnection];
+    }
+}
+
 - (void)startNotifier
 {
     if (self.isNotifying)
@@ -132,7 +140,7 @@ NSString *const kRealReachabilityChangedNotification = @"kRealReachabilityChange
     NSDictionary *inputDic = @{kEventKeyID:@(RREventLoad)};
     [self.engine receiveInput:inputDic];
     
-    [GLocalConnection startNotifier];
+    [[RealReachabilityGlobal sharedInstance].localConnection startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(localConnectionHandler:)
                                                  name:kLocalConnectionChangedNotification
@@ -163,7 +171,7 @@ NSString *const kRealReachabilityChangedNotification = @"kRealReachabilityChange
     NSDictionary *inputDic = @{kEventKeyID:@(RREventUnLoad)};
     [self.engine receiveInput:inputDic];
     
-    [GLocalConnection stopNotifier];
+    [[RealReachabilityGlobal sharedInstance].localConnection stopNotifier];
     
     self.isNotifying = NO;
 }
@@ -173,7 +181,7 @@ NSString *const kRealReachabilityChangedNotification = @"kRealReachabilityChange
 - (void)reachabilityWithBlock:(void (^)(ReachabilityStatus status))asyncHandler
 {
     // logic optimization: no need to ping when Local connection unavailable!
-    if ([GLocalConnection currentLocalConnectionStatus] == LC_UnReachable)
+    if ([[RealReachabilityGlobal sharedInstance].localConnection currentLocalConnectionStatus] == LC_UnReachable)
     {
         if (asyncHandler != nil)
         {
@@ -247,7 +255,7 @@ NSString *const kRealReachabilityChangedNotification = @"kRealReachabilityChange
         case RRStateLoading:
         {
             // status on loading, return local status temporary.
-            return (ReachabilityStatus)(GLocalConnection.currentLocalConnectionStatus);
+            return (ReachabilityStatus)([RealReachabilityGlobal sharedInstance].localConnection.currentLocalConnectionStatus);
         }
             
         default:

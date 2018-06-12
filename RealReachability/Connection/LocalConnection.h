@@ -33,7 +33,6 @@ typedef NS_ENUM(NSInteger, LocalConnectionStatus)
 @property (nonatomic, assign) BOOL isReachable;
 
 + (instancetype)sharedInstance;
-+ (instancetype)sharedInstanceWithHostName:(nonnull NSString *)hostName;
 
 - (id)initWithHostName:(nonnull NSString*) hostName;
 

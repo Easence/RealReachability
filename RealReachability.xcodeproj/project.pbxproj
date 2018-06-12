@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5630872020CF9ABC0004FF61 /* RealReachabilityGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5630871E20CF9ABC0004FF61 /* RealReachabilityGlobal.h */; };
+		5630872120CF9ABC0004FF61 /* RealReachabilityGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5630871F20CF9ABC0004FF61 /* RealReachabilityGlobal.m */; };
 		7F3A815F1D5220D6004B78CE /* RealReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F3A815E1D5220D6004B78CE /* RealReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F3A81821D522132004B78CE /* LocalConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F3A81671D522132004B78CE /* LocalConnection.h */; };
 		7F3A81831D522132004B78CE /* LocalConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3A81681D522132004B78CE /* LocalConnection.m */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5630871E20CF9ABC0004FF61 /* RealReachabilityGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealReachabilityGlobal.h; sourceTree = "<group>"; };
+		5630871F20CF9ABC0004FF61 /* RealReachabilityGlobal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RealReachabilityGlobal.m; sourceTree = "<group>"; };
 		7F3A815B1D5220D6004B78CE /* RealReachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RealReachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3A815E1D5220D6004B78CE /* RealReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealReachability.h; sourceTree = "<group>"; };
 		7F3A81601D5220D6004B78CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 			children = (
 				7F3A81671D522132004B78CE /* LocalConnection.h */,
 				7F3A81681D522132004B78CE /* LocalConnection.m */,
+				5630871E20CF9ABC0004FF61 /* RealReachabilityGlobal.h */,
+				5630871F20CF9ABC0004FF61 /* RealReachabilityGlobal.m */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -167,6 +173,7 @@
 				7F3A81871D522132004B78CE /* FSMStateUtil.h in Headers */,
 				7F3A818F1D522132004B78CE /* ReachStateUnReachable.h in Headers */,
 				7F3A815F1D5220D6004B78CE /* RealReachability.h in Headers */,
+				5630872020CF9ABC0004FF61 /* RealReachabilityGlobal.h in Headers */,
 				7F3A81951D522132004B78CE /* PingFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +247,7 @@
 			files = (
 				7F3A81861D522132004B78CE /* FSMEngine.m in Sources */,
 				7F3A81881D522132004B78CE /* FSMStateUtil.m in Sources */,
+				5630872120CF9ABC0004FF61 /* RealReachabilityGlobal.m in Sources */,
 				7F3A81831D522132004B78CE /* LocalConnection.m in Sources */,
 				7F3A81981D522132004B78CE /* PingHelper.m in Sources */,
 				7F3A819A1D522132004B78CE /* RealReachability.m in Sources */,

@@ -107,17 +107,6 @@ static NSString *connectionFlags(SCNetworkReachabilityFlags flags)
     return localConnection;
 }
 
-+ (instancetype)sharedInstanceWithHostName:(nonnull NSString *)hostName
-{
-    static id localConnection = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        localConnection = [[self alloc] initWithHostName:hostName];
-    });
-    
-    return localConnection;
-}
-
 #pragma mark - actions
 
 - (void)startNotifier
